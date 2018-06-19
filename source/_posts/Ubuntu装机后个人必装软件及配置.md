@@ -1,5 +1,5 @@
 ---
-title: Ubuntu装机后个人比装软件及配置
+title: Ubuntu装机后个人必装软件及配置
 date: 2018-06-19
 tags: [Ubuntu]
 ---
