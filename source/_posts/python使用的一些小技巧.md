@@ -31,6 +31,10 @@ d = {key: value for (key, value) in iterable}
 
 ## 3月12日
 
+### ubuntu系统中不同版本pythoh存在的应用问题
+
+``` python3 -m pip install xxx ```
+
 ### windows系统中不同版本python存在的应用问题
 
 - 在windows系统中，同时存在python3.x和python2.x：
