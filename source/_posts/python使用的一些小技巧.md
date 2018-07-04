@@ -5,6 +5,13 @@ tags: [python]
 ---
 
 > 2018年，新的开始，所以我用Python3.x啦，除了原有项目的维护外，全面升级到python3，人生苦短，就用python
+
+## 7月3日
+
+记住一句话：
+
+>当我们叠加装饰器的时候，**最上层的装饰器会首先运行**，接着调用下一行的下一个函数：要么是视图函数，要么就是装饰器。
+
 ## 6月26日
 
 值得参考的python[点击这里](https://taizilongxu.gitbooks.io/stackoverflow-about-python/content/1/README.html)
