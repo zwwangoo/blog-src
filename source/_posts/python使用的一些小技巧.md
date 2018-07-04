@@ -29,11 +29,15 @@ tags: [python]
 d = {key: value for (key, value) in iterable}
 ```
 
+<!--more-->
+
 ## 3月12日
 
 ### ubuntu系统中不同版本pythoh存在的应用问题
 
-``` python3 -m pip install xxx ```
+``` 
+python3 -m pip install xxx 
+```
 
 ### windows系统中不同版本python存在的应用问题
 
