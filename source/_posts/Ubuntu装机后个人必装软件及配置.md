@@ -109,3 +109,15 @@ sudo unzip mac-fonts.zip -d /usr/share/fonts; rm mac-fonts.zip
 
 sudo fc-cache -f -v
 ```
+
+## 状态栏显示网速
+
+```bash
+sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update
+sudo apt-get install indicator-netspeed
+```
+
+之后把 `indicator-netspend` 加入到自动的脚本中去。[参考](https://blog.csdn.net/sinat_36219858/article/details/61195905)
+
+
