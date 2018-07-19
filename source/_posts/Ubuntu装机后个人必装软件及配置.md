@@ -61,9 +61,13 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key a
 sudo apt-get update
 
 sudo apt-get install google-chrome-stable
-
-#  /usr/bin/google-chrome-stable
 ```
+
+安装完成之后，命令行启动
+
+`/usr/bin/google-chrome-stable`
+
+启动完成之后锁定到启动器即可。
 
 ## 网易云音乐
 
@@ -120,7 +124,65 @@ sudo apt-get install indicator-netspeed
 
 之后把 `indicator-netspend` 加入到自动的脚本中去。[参考](https://blog.csdn.net/sinat_36219858/article/details/61195905)
 
+## 搜狗输入法
+
 ## 美化终端
+
+### oh-my-zsh的安装及个人配置
+
+安装oh-my-zsh之前，需要保证zsh已经被安装
+
+#### 安装zsh
+
+- 首先需要安装zsh
+
+`sudo apt-get install zsh`
+
+- 确认是否安装成功
+
+`zsh --version` 
+
+- 设置zsh为默认shell
+
+`sudo chsh -s $(which zsh)`
+
+设置完成之后，需要注销重新登录
+
+#### 安装oh-my-zsh
+
+- 下载并安装：
+
+```
+sudo apt install curl
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh 
+```
+
+- 配置：
+
+```
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+chsh -s /bin/zsh
+```
+
+- 个人设置
+
+编辑`~/.zshrc`,更改
+```
+ZSH_THEME='terminalparty'
+```
+添加
+```
+export DEFAULT_USER='username'
+```
+
+以下是关于pyenv的配置，如果安装pyenv则需要在该文件中添加如下语句：
+```
+export PATH="/home/ouou/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+```
+
+### 安装 terminator
 
 记住常用的快捷键
 
@@ -166,6 +228,9 @@ sudo apt-get install indicator-netspeed
     login_shell = True
     show_titlebar = False
 ```
+
+## vim的配置
+
 ## 截屏软件
 
 安装`deepin-screenshot`
@@ -191,3 +256,12 @@ sudo dpkg -i deepin-screenshot_2.0+git20130618155753~8c1ba38453precise_all.deb
 安装的过程中，如果出现**依赖关系问题 - 仍未被配置**等问题，执行`sudo apt -f install `之后重新执行安装命令即可。
 
 安装完成之后，在终端输入命令`deepin-screenshot`就会出现截屏的界面，然后自定义快捷键`ctrl+alt+a`启动截屏
+
+## 网易云音乐
+
+官网更新的1.1.0版本安装完成之后，之后超级管理员能够启动，普通管理员无权限，所以要安装1.0.0版本的。
+下载安装包：
+
+执行命令 
+
+`sudo dpkg -i `
