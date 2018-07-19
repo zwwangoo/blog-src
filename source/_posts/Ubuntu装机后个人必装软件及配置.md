@@ -136,28 +136,35 @@ sudo apt-get install indicator-netspeed
 
 ```
 [global_config]
+  borderless = True
+  window_state = fullscreen
 [keybindings]
-[profiles]
-  [[default]]
-    use_system_font = False # 是否启用系统字体
-    login_shell = True
-    background_darkness = 0.92 # 背景颜色
-    background_type = transparent
-    background_image = None
-    cursor_color = "#3036ec" # 光标颜色
-    foreground_color = "#00ff00"
-    show_titlebar = False # 不显示标题栏，也就是 terminator 中那个默认的红色的标题栏
-    custom_command = tmux
-    font = Ubuntu Mono 15  # 字体设置，后面的数字表示字体大小
+  close_term = <Super>c
+  go_down = <Alt>k
+  go_left = <Alt>h
+  go_right = <Alt>l
+  go_up = <Alt>k
+  layout_launcher = None
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.9
+    background_image = None
+    background_type = transparent
+    cursor_color = "#3036ec"
+    custom_command = tmux
+    font = Ubuntu Mono 15
+    foreground_color = "#00ff00"
+    login_shell = True
+    show_titlebar = False
 ```
 ## 截屏软件
 
