@@ -159,3 +159,28 @@ sudo apt-get install indicator-netspeed
       parent = ""
 [plugins]
 ```
+## 截屏软件
+
+安装`deepin-screenshot`
+先安装一些必须安装的库
+
+```
+sudo apt install python-deepin-utils python-imaging python-scipy python-wnck python-xdg
+```
+
+下载安装包进行安装：
+
+```
+wget http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-utils/python-deepin-utils_0.0.1-1%2bgit20130502093354ubuntu2_amd64.deb \
+         http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gsettings/deepin-gsettings_0.1%2bgit20130318115600ubuntu1_amd64.deb \
+         http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-ui/deepin-ui_1%2bgit20130618094833~90b6485f6cprecise2_all.deb \
+         http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-screenshot/deepin-screenshot_2.0%2bgit20130618155753~8c1ba38453precise_all.deb
+
+sudo dpkg -i python-deepin-utils_0.0.1-1+git20130502093354ubuntu2_amd64.deb 
+sudo dpkg -i deepin-gsettings_0.1+git20130318115600ubuntu1_amd64.deb
+sudo dpkg -i deepin-ui_1+git20130618094833~90b6485f6cprecise2_all.deb
+sudo dpkg -i deepin-screenshot_2.0+git20130618155753~8c1ba38453precise_all.deb
+```
+安装的过程中，如果出现**依赖关系问题 - 仍未被配置**等问题，执行`sudo apt -f install `之后重新执行安装命令即可。
+
+安装完成之后，在终端输入命令`deepin-screenshot`就会出现截屏的界面，然后自定义快捷键`ctrl+alt+a`启动截屏
