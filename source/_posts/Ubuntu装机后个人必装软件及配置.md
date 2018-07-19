@@ -120,4 +120,42 @@ sudo apt-get install indicator-netspeed
 
 之后把 `indicator-netspend` 加入到自动的脚本中去。[参考](https://blog.csdn.net/sinat_36219858/article/details/61195905)
 
+## 美化终端
 
+记住常用的快捷键
+
+安装terminator
+
+`sudo apt-get install terminator`
+
+对terminator进行配置：`~/.config/terminator/config`
+
+> 如果报错，Unable to open ~/.config/terminator/config ，解决方法：打开terminator终端，然后右击终端的黑色背景，选择preference->layouts->add，关闭该窗口即可找到config文件。
+
+> 参考[这里](https://www.aliyun.com/jiaocheng/119215.html)
+
+```
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    use_system_font = False # 是否启用系统字体
+    login_shell = True
+    background_darkness = 0.92 # 背景颜色
+    background_type = transparent
+    background_image = None
+    cursor_color = "#3036ec" # 光标颜色
+    foreground_color = "#00ff00"
+    show_titlebar = False # 不显示标题栏，也就是 terminator 中那个默认的红色的标题栏
+    custom_command = tmux
+    font = Ubuntu Mono 15  # 字体设置，后面的数字表示字体大小
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
+```
