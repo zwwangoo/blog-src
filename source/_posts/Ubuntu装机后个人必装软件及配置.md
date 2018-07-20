@@ -199,14 +199,26 @@ eval "$(pyenv virtualenv-init -)"
 ```
 [global_config]
   borderless = True
+  enabled_plugins = CustomCommandsMenu, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  handle_size = -3
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+  title_font = Sans 14
+  title_transmit_bg_color = "#3e3838"
+  title_transmit_fg_color = "#000000"
   window_state = fullscreen
 [keybindings]
   close_term = <Super>c
-  go_down = <Alt>k
-  go_left = <Alt>h
-  go_right = <Alt>l
-  go_up = <Alt>k
+  cycle_next = <Alt>l
+  cycle_prev = <Alt>h
+  go_down = None
+  go_left = None
+  go_right = None
+  go_up = None
+  help = None
   layout_launcher = None
+  split_horiz = <Alt>o
+  split_vert = <Alt>e
 [layouts]
   [[default]]
     [[[child1]]]
@@ -221,12 +233,14 @@ eval "$(pyenv virtualenv-init -)"
     background_darkness = 0.9
     background_image = None
     background_type = transparent
-    cursor_color = "#3036ec"
+    cursor_color = "#ffffff"
     custom_command = tmux
-    font = Ubuntu Mono 15
-    foreground_color = "#00ff00"
+    font = 文泉驿等宽微米黑 12
+    foreground_color = "#ffffff"
     login_shell = True
+    palette = "#000000:#5a8e1c:#2d5f5f:#cdcd00:#1e90ff:#cd00cd:#00cdcd:#e5e5e5:#4c4c4c:#868e09:#00ff00:#ffff00:#4682b4:#ff00ff:#00ffff:#ffffff"
     show_titlebar = False
+    use_system_font = False
 ```
 
 ## vim的配置
