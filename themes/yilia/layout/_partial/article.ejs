@@ -126,11 +126,11 @@
         <div id="commenthub_thread"></div>
       </div>
       <script type="text/javascript">
-        var commenthub_id = '{{ theme.commenthub.id }}';
-        var commenthub_website = '{{ theme.commenthub.site }}';
-        var commenthub_identifier = '{{ page.path }}';
-        var commenthub_url = '{{ page.permalink }}';
-        var commenthub_title = '{{ page.title| addslashes }}';
+        var commenthub_id = '<%= theme.commenthub.id %>' 
+        var commenthub_website = '<%= theme.commenthub.site %>';
+        var commenthub_identifier = '<%= post.path %>';
+        var commenthub_url = '<%= post.permalink %>';
+        var commenthub_title = '<%= post.title %>';
         var dsq = document.createElement('script');
             dsq.type = 'text/javascript';
             dsq.async = true;
