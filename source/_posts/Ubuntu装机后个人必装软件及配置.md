@@ -6,6 +6,25 @@ tags: [Ubuntu]
 
 # Ubuntu 16 版本  
 
+## google-chrome
+
+```bash
+
+sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/
+
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install google-chrome-stable
+```
+
+安装完成之后，命令行启动
+
+`/usr/bin/google-chrome-stable`
+
+启动完成之后锁定到启动器即可。
+
 ## shadowsocks-qt5
 
 ```bash
@@ -15,8 +34,6 @@ sudo apt update
 
 sudo apt install shadowsocks-qt5 -y
 ```
-
-<!--more-->
 
 ## ssr-qt5与全局代理
 
@@ -50,28 +67,20 @@ file:///home/ouou/Downloads/autoproxy.pac
 sudo apt-get install unity-tweak-tool
 ```
 
-## google-chrome
-
-```bash
-
-sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/
-
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
-
-sudo apt-get update
-
-sudo apt-get install google-chrome-stable
-```
-
-安装完成之后，命令行启动
-
-`/usr/bin/google-chrome-stable`
-
-启动完成之后锁定到启动器即可。
+<!--more-->
 
 ## 网易云音乐
 
-下载地址：[http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb](http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb)
+~~ 下载地址：[V1.1.0](http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb) ~~
+官网更新的1.1.0版本安装完成之后，之后超级管理员能够启动，普通管理员无权限，所以要安装1.0.0版本的。
+
+[V1.0.0](http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb)
+
+下载完成之后，在文件所在目录：
+
+```
+sudo dpke -i netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb
+```
 
 ## WPS for Linux
 
