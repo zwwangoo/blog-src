@@ -128,122 +128,13 @@ sudo apt-get install indicator-netspeed
 
 ## 美化终端
 
-### oh-my-zsh的安装及个人配置
+### 安装zsh
+### 安装terminator
+## Vim 安装
 
-安装oh-my-zsh之前，需要保证zsh已经被安装
+** 以上的三个配置为了方便移至，已经写了一个自动部署的脚本，详见[ubuntu_auto_config](http://github.com/suadminwen/ubuntu_auto_config) **
 
-#### 安装zsh
-
-- 首先需要安装zsh
-
-`sudo apt-get install zsh`
-
-- 确认是否安装成功
-
-`zsh --version` 
-
-- 设置zsh为默认shell
-
-`sudo chsh -s $(which zsh)`
-
-设置完成之后，需要注销重新登录
-
-#### 安装oh-my-zsh
-
-- 下载并安装：
-
-```
-sudo apt install curl
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh 
-```
-
-- 配置：
-
-```
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-chsh -s /bin/zsh
-```
-
-- 个人设置
-
-编辑`~/.zshrc`,更改
-```
-ZSH_THEME='terminalparty'
-```
-添加
-```
-export DEFAULT_USER='username'
-```
-
-以下是关于pyenv的配置，如果安装pyenv则需要在该文件中添加如下语句：
-```
-export PATH="/home/ouou/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-```
-
-### 安装 terminator
-
-记住常用的快捷键
-
-安装terminator
-
-`sudo apt-get install terminator`
-
-对terminator进行配置：`~/.config/terminator/config`
-
-> 如果报错，Unable to open ~/.config/terminator/config ，解决方法：打开terminator终端，然后右击终端的黑色背景，选择preference->layouts->add，关闭该窗口即可找到config文件。
-
-> 参考[这里](https://www.aliyun.com/jiaocheng/119215.html)
-
-```
-[global_config]
-  borderless = True
-  enabled_plugins = CustomCommandsMenu, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  handle_size = -3
-  inactive_color_offset = 1.0
-  suppress_multiple_term_dialog = True
-  title_font = Sans 14
-  title_transmit_bg_color = "#3e3838"
-  title_transmit_fg_color = "#000000"
-  window_state = fullscreen
-[keybindings]
-  close_term = <Super>c
-  cycle_next = <Alt>l
-  cycle_prev = <Alt>h
-  go_down = None
-  go_left = None
-  go_right = None
-  go_up = None
-  help = None
-  layout_launcher = None
-  split_horiz = <Alt>o
-  split_vert = <Alt>e
-[layouts]
-  [[default]]
-    [[[child1]]]
-      parent = window0
-      type = Terminal
-    [[[window0]]]
-      parent = ""
-      type = Window
-[plugins]
-[profiles]
-  [[default]]
-    background_darkness = 0.9
-    background_image = None
-    background_type = transparent
-    cursor_color = "#ffffff"
-    custom_command = tmux
-    font = 文泉驿等宽微米黑 12
-    foreground_color = "#ffffff"
-    login_shell = True
-    palette = "#000000:#5a8e1c:#2d5f5f:#cdcd00:#1e90ff:#cd00cd:#00cdcd:#e5e5e5:#4c4c4c:#868e09:#00ff00:#ffff00:#4682b4:#ff00ff:#00ffff:#ffffff"
-    show_titlebar = False
-    use_system_font = False
-```
-
-## vim的配置
+脚本完成之后，配置基本完成。
 
 ## 截屏软件
 
