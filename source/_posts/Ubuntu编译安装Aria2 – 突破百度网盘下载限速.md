@@ -86,7 +86,7 @@ vi /etc/aria2/aria2.conf
 插入以下内容：
 
 ```
-dir=~/Downloads
+dir=/home/wen/Downloads  # 这里需要改成绝对路径
 disable-ipv6=true
 enable-rpc=true
 rpc-allow-origin-all=true
