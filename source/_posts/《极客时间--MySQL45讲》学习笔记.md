@@ -80,7 +80,7 @@ redo log的写入可以拆分为两个步骤： “prepare” 和“commit”，
 
 给ID=2这一行的c字段加1
 
-![给ID=2这一行的c字段加1 日志写入流程](/blog-img/2019040102.png)
+![给ID=2这一行的c字段加1 日志写入流程](/blog-img/2019040102.jpg)
 
 redo log 用于保证crash-safe能力，`innodb_flush_log_at_trx_commit` 这个参数设置成1的时候，表示每次事务的redo log 都直接持久化到磁盘。这个参数建议这是成1，这样可以保证MySQL异常重启之后数据不会丢失。`sync_binlog` 参数设置为1时，表示每次事务的binlog都直接持久化到磁盘。
 
@@ -93,13 +93,13 @@ MySQL中锁分为三种：全局锁、表级锁和行级锁。
 
 ### 全局锁
 
-全局锁是对整个数据库家所，会让整个数据库处于只读的状态。
+全局锁是对整个数据库加锁，会让整个数据库处于只读的状态。
 全局锁的使用命令：
 
 ```
-flush tables with read lock;  // 加锁
+flush tables with read lock;  # 加锁
 
-ublock tables;  // 解锁
+ublock tables;  # 解锁
 ```
 
 全局锁多用于全库逻辑备份。
