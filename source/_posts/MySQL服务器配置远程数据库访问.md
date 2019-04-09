@@ -1,5 +1,5 @@
 ---
-title: 服务器配置远程数据库访问
+title: MySQL服务器配置远程数据库访问
 date: 2016-10-18
 tags: [数据库, Linux]
 ---
@@ -15,7 +15,25 @@ tags: [数据库, Linux]
 
     sudo apt-get install mysql-server mysql-client
 
-软件包设置对话框"中输入mysql中"root"用户的密码以及确认密码
+软件包设置对话框"中输入mysql中"root"用户的密码以及确认密码。
+
+注意：
+
+安装过程没有提示设置密码，那么完成之后，可以在`/etc/mysql/debian.cnf` 有着MySQL默认的用户名和用户密码， 用户名默认的不是root，而是debian-sys-maint
+
+密码会随即给一个很复杂的，这个时候，要进入MySQL的话，就是需要在终端把root更改为debian-sys-maint
+
+所安装的版本是5.7，所以password字段已经被删除，取而代之的是`authentication_string`字段，所以要更改密码：
+
+```
+mysql> use mysql;
+
+mysql> update user set authentication_string=PASSWORD("这里输入你要改的密码") where User='root';  # 更改密码
+mysql> update user set plugin="mysql_native_password";  # 如果没这一行可能也会报一个错误，因此需要运行这一行
+
+mysql> flush privileges;  # 更新所有操作权限
+mysql> quit;
+```
 
 <!--more-->
 
@@ -25,6 +43,9 @@ tags: [数据库, Linux]
 
 如果mysql启动成功，处于运行状态说明mysql安装成功。
 
+### 查看mysql版本
+
+    mysql --version
 
 ### 登录mysql
 
@@ -32,8 +53,9 @@ tags: [数据库, Linux]
 
 输入mysql中"root"用户的密码
 
-登录成功。
+说明：
 
+-P: 表示服务端口,有些时候Mysql提供服务的端口改成其他端口。建议是改成其他端口，比如13306
 
 ### 创建远程登录用户
 
@@ -70,21 +92,30 @@ GRANT ALL ON *.* TO 'pig'@'%';
 
     GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION;
 
+授权完成之后：
+
+    flush privileges;  # 更新所有操作权限
+
 ### 修改监听ip
 
 ~~ 在目录/etc/mysql下找到my.cnf，用vim编辑，找到my.cnf里面的 ~~
+注：mysql 5.5版本，修改`/etc/my.cnf`，mysql 5.7 修改 `/etc/mysql/mysql.conf.d/mysqld.cnf` 文件。
 
     bind-address           = 127.0.0.1
 
 将其注释。
 
+### 重启数据库服务器
+
+	sudo service mysql restart
+
+## MySQL的一些其他配置
+
 ### mysql设置中文输入
 
-#### 1
+mysql 5.5版本，修改`/etc/my.cnf`，mysql 5.7 修改 `/etc/mysql/mysql.conf.d/mysqld.cnf` 文件。
 
-    vim /etc/mysql/my.cnf
-
-添加以下：
+添加以下内容：
 
 ```
 [client]
@@ -95,25 +126,27 @@ character-set-server=utf8
 collation-server=utf8_general_ci
 ```
 
-#### 2 重启mysql(`sudo service mysql restart`)
+重启mysql(`sudo service mysql restart`)
 
-#### 3 修成成功，进入mysql查看字符集(mysql>`show variables like 'character_set_%';`)
+进入mysql查看字符集(mysql>`show variables like 'character_set_%';`)
 
-### 重启ubuntu
+### 忽略表名大小写
 
-    sudo reboot
+在配置文件中添加以下内容：
 
-### 远程登录
+```
+[mysqld]
+lower_case_table_names=1 # 1是不区分，0是区分
+```
 
-用创建的用户名和密码登录
-
-成功
+重启mysql(`sudo service mysql restart`)
 
 ### 说明
 
 mysql默认端口号为3306
-不允许root帐号做远程登录的帐号
+不建议使用root帐号做远程登录的帐号
 
+---
 
 ## 安装postgresql，并配置远程用户访问
 
@@ -180,20 +213,3 @@ postgresql的默认端口号为5432
 
 
 注：配置完成之后，别忘了将服务器主机的防火墙关闭这些端口的防护
-
-```
-相关参数
-实验室ip：10.16.155.241
-mysql
-端口：5002
-用户名：mysqlroot
-密码：chuangxin2624
-
-postgresql
-端口：5003
-用户名：postgres
-密码：chuangxin2624
-
-数据库服务登录帐号：sql
-登录密码和root密码：admin
-```
