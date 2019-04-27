@@ -79,7 +79,7 @@ if not jpype.isJVMStarted():
 
 对Java并不是很熟悉，刚刚简单的过了一便基本的语法，更别提对jar包的理解了，简单从网上搜索大概了解jecell是处理excel的jar，可以生成报表，带图片，动态的，还可以在客户不安装OFFICE的情况下使用。可以实现对excel设置密码和去除密码。
 
-可以在这里下载：[点击下载jecell.jar](http://)
+可以在这里下载：[链接: https://pan.baidu.com/s/1XllVYN6CkRpB1R16HS_78Q 提取码: 27xw](https://pan.baidu.com/s/1XllVYN6CkRpB1R16HS_78Q)
 
 下面简单的示例：
 
@@ -156,14 +156,12 @@ jvm_path = jpype.get_default_jvm_path()
 jxcell_path = os.path.join(project_dir, 'lib/jxcell.jar')
 
 
-def encrypt(urls, passwd):
+def encrypt(url, passwd):
     jpype.startJVM(jvm_path, '-ea', '-Djava.class.path=' + jxcell_path)
     view = jpype.JClass('com.jxcell.View')
     m_view = view()
-    for url in urls:
-        m_view.read(url)
-        m_view.write(url, passwd)
-    return urls
+    m_view.write(url, passwd)
+    return url
 
 
 if __name__ == '__main__':
@@ -176,6 +174,7 @@ if __name__ == '__main__':
 - src/
   - lib/jxcell.jar
   - encrypt_xls.py
+  - test.xls
 
 运行文件之后，打开test.xls文件会发现已经加密成功。
 
