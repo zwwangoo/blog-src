@@ -20,7 +20,7 @@ date: 2019-03-01 18:50:32
 - 熟悉Flask、Django，了解Tornado。能够搭建基于Flask项目框架的API框架，熟悉Restful规范。
 - 熟悉MySQL、Redis，使用MongoDB。能够根据需求独立完成数据库的设计和优化。
 - 长期使用Ubuntu系统进行开发，熟悉Linux常用命令。
-- 掌握Ngingx、Docker、uwsgi、supervisor 等，有线上维护的经验，能够独立部署项目。
+- 掌握Nginx、Docker、uwsgi、supervisor 等，有线上维护的经验，能够独立部署项目。
 - 掌握Git的使用和MarkDown文档的编写，推崇容器化、TDD和持续集成开发。
 - 熟练掌握W3C标准、HTML、CSS、JavaScript以及页面架构和布局。
 - 了解网页爬虫，数据分析技术等。
