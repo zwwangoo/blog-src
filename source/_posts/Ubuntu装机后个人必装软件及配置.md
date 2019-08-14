@@ -4,7 +4,7 @@ date: 2018-06-19
 tags: [Ubuntu]
 ---
 
-# Ubuntu 16 版本  
+# Ubuntu 18 版本  
 
 ## google-chrome
 
@@ -33,6 +33,22 @@ sudo add-apt-repository ppa:hzwhuang/ss-qt5
 sudo apt update
 
 sudo apt install shadowsocks-qt5 -y
+```
+
+Ubuntu18及以上版本会在`add-apt-repository`之后会报错，需要手动去改版本信息：
+
+打开文件：
+
+```
+sudo vi /etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-cosmic.list
+```
+
+将下面 `xenial`改成`cosmic`:
+
+```
+
+deb-src http://ppa.launchpad.net/hzwhuang/ss-qt5/ubuntu xenial main
+
 ```
 
 ## ssr-qt5与全局代理
@@ -170,12 +186,3 @@ sudo dpkg -i deepin-screenshot_2.0+git20130618155753~8c1ba38453precise_all.deb
 安装的过程中，如果出现**依赖关系问题 - 仍未被配置**等问题，执行`sudo apt -f install `之后重新执行安装命令即可。
 
 安装完成之后，在终端输入命令`deepin-screenshot`就会出现截屏的界面，然后自定义快捷键`ctrl+alt+a`启动截屏
-
-## 网易云音乐
-
-官网更新的1.1.0版本安装完成之后，之后超级管理员能够启动，普通管理员无权限，所以要安装1.0.0版本的。
-下载安装包：
-
-执行命令 
-
-`sudo dpkg -i `
