@@ -32,26 +32,26 @@ sudo add-apt-repository ppa:hzwhuang/ss-qt5
 
 sudo apt update
 
-sudo apt install shadowsocks-qt5 -y
+sudo apt install shadowsocks-qt5
 ```
 
-Ubuntu18及以上版本会在`add-apt-repository`之后会报错，需要手动去改版本信息：
+Ubuntu18及以上版本会在`add-apt-repository`之后会报错，需要手动去改源中的版本信息：
 
 打开文件：
 
 ```
-sudo vi /etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-cosmic.list
+sudo vi /etc/apt/sources.list.d/hzwhuang-ubuntu-ss-qt5-bionic.list
 ```
 
-将下面 `xenial`改成`cosmic`:
+将下面`bionic`改成 `xenial`:
 
 ```
-
 deb-src http://ppa.launchpad.net/hzwhuang/ss-qt5/ubuntu xenial main
-
 ```
 
 ## ssr-qt5与全局代理
+
+**注意，Ubuntu 18及以上版本，以下方式添加全局代理已经无效。目前的做法就是，在设置网络中，“网络代理”选择手动，填入相应的代理IP和端口。然后登录谷歌，同步插件SwitchyOmega，进行代理。成功之后再禁用设置网络中的网络代理。**
 
 [参考这里](https://www.litcc.com/2016/12/29/Ubuntu16-shadowsocks-pac/index.html)
 
@@ -75,42 +75,46 @@ genpac --pac-proxy "SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:108
 点击：System settings > Network > Network Proxy，选择 Method 为 Automatic，设置 Configuration URL 为 autoproxy.pac 文件的路径，点击 Apply System Wide。
 格式如：file:///home/{user}/autoproxy.pac
 
-file:///home/ouou/Downloads/autoproxy.pac
+file:///home/wen/Downloads/autoproxy.pac
 
-## unity-tweak-tool
+## gnome-tweak-tool
+
+界面优化工具，可以自定义系统主题、图标、锁屏界面内容、字体，管理插件等内容
 
 ```bash
-sudo apt-get install unity-tweak-tool
+sudo apt-get install gnome-tweak-tool
 ```
 
 <!--more-->
 
 ## 网易云音乐
 
-~~ 下载地址：[V1.1.0](http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb) ~~
-官网更新的1.1.0版本安装完成之后，之后超级管理员能够启动，普通管理员无权限，所以要安装1.0.0版本的。
+[官网搬运V1.1.0](http://d1.music.126.net/dmusic/netease-cloud-music_1.1.0_amd64_ubuntu.deb)
 
-[V1.0.0](http://s1.music.126.net/download/pc/netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb)
+[官网搬运V1.2.1](http://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb)
 
 下载完成之后，在文件所在目录：
 
 ```
-sudo dpke -i netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb
+sudo dpkg -i netease-cloud-music_1.1.0_amd64_ubuntu16.04.deb
 ```
 
 ## WPS for Linux
 
-官网下载安装包[http://kdl.cc.ksosoft.com/wps-community/download/6634/wps-office_10.1.0.6634_amd64.deb](http://kdl.cc.ksosoft.com/wps-community/download/6634/wps-office_10.1.0.6634_amd64.de)
+[官网搬运](https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/8722/wps-office_11.1.0.8722_amd64.deb)
 
 下载完成之后，进行安装
 
 ```bash
-sudo dpkg -i wps-office_10.1.0.6634_amd64.deb
+sudo dpkg -i wps-office_11.1.0.8722_amd64.deb
+```
 
-# 以下是卸载libreOffice
-sudo apt-get remove libreoffice-common
+### 以下是卸载libreOffice
 
-sudo apt-get remove unity-webapps-common
+```
+sudo apt remove libreoffice-common
+
+sudo apt remove unity-webapps-common
 
 sudo apt autoremove
 ```
@@ -119,12 +123,14 @@ sudo apt autoremove
 
 下载字体包：
 
-[https://pan.baidu.com/s/1eS6xIzo](https://pan.baidu.com/s/1eS6xIzo)
+[百度网盘](https://pan.baidu.com/s/1eS6xIzo)
+[谷歌云端硬盘共享](https://drive.google.com/file/d/1K2G1cVWYEUeV4IuciRzKAqlHxlzFr9HI/view?usp=sharing)
 
 下载之后解包，然后
 
 ```bash
-sudo cp mtextra.ttf  symbol.ttf  WEBDINGS.TTF  wingding.ttf  WINGDNG2.ttf  WINGDNG3.ttf  /usr/share/fonts
+sudo mv mtextra.ttf  symbol.ttf  WEBDINGS.TTF  wingding.ttf  WINGDNG2.ttf  WINGDNG3.ttf  /usr/share/fonts
+sudo fc-cache -f -v
 ```
 
 重启wps 即可。
@@ -151,38 +157,72 @@ sudo apt-get install indicator-netspeed
 
 ## 搜狗输入法
 
+一顿操作猛如虎：
+
+```
+wget http://cdn2.ime.sogou.com/dl/index/1524572264/sogoupinyin_2.2.0.0108_amd64.deb
+
+sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
+sudo apt install -f 
+sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
+sudo rm sogoupinyin_2.2.0.0108_amd64.deb
+
+```
+安装完成之后，好像需要重启电脑一下，然后就可以通过 `CTR+空格键` 切换输入法了。
+
 ## 美化终端
 
 ### 安装zsh
 ### 安装terminator
-## Vim 安装
+## neovim 安装
+
+从vim 转移到neovim，个人觉得neovim用着可能更舒服一些，主要还是一些插件安装和用着舒服。
 
 ** 以上的三个配置为了方便移至，已经写了一个自动部署的脚本，详见[ubuntu_auto_config](http://github.com/suadminwen/ubuntu_auto_config) **
 
 脚本完成之后，配置基本完成。
+然而，没有那么智能，安装的过程中，总会有一些问题，所以还有根据具体问题进行修复。
 
 ## 截屏软件
 
-安装`deepin-screenshot`
-先安装一些必须安装的库
+截屏软件更新了一下，发现一个好用又强大的软件：火焰截图。
 
 ```
-sudo apt install python-deepin-utils python-imaging python-scipy python-wnck python-xdg
+sudo apt install flameshot
+```
+如果apt 无法安装，我们也可以通过github下载安装包安装：[https://github.com/lupoDharkael/flameshot/releases](https://github.com/lupoDharkael/flameshot/releases)
+选择ubuntu 18 版本的 `flameshot_0.6.0_bionic_x86_64.deb`下载，然后
+
+```
+sudo dpkg -i flameshot_0.6.0_bionic_x86_64.deb
+```
+安装完成之后，可以通过命令：`flameshot gui` 启动截图。
+
+然后配置到快捷键便可以愉快的截图啦！
+
+## Typora Markdown文档编辑器
+
+Typora，到目前为止，认为的Ubuntu下最好的Markdown编辑器。
+
+```
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt-get update
+sudo apt-get install typora
 ```
 
-下载安装包进行安装：
+## guake 下拉终端
 
 ```
-wget http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-utils/python-deepin-utils_0.0.1-1%2bgit20130502093354ubuntu2_amd64.deb \
-         http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gsettings/deepin-gsettings_0.1%2bgit20130318115600ubuntu1_amd64.deb \
-         http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-ui/deepin-ui_1%2bgit20130618094833~90b6485f6cprecise2_all.deb \
-         http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-screenshot/deepin-screenshot_2.0%2bgit20130618155753~8c1ba38453precise_all.deb
-
-sudo dpkg -i python-deepin-utils_0.0.1-1+git20130502093354ubuntu2_amd64.deb 
-sudo dpkg -i deepin-gsettings_0.1+git20130318115600ubuntu1_amd64.deb
-sudo dpkg -i deepin-ui_1+git20130618094833~90b6485f6cprecise2_all.deb
-sudo dpkg -i deepin-screenshot_2.0+git20130618155753~8c1ba38453precise_all.deb
+sudo apt install guake
 ```
-安装的过程中，如果出现**依赖关系问题 - 仍未被配置**等问题，执行`sudo apt -f install `之后重新执行安装命令即可。
 
-安装完成之后，在终端输入命令`deepin-screenshot`就会出现截屏的界面，然后自定义快捷键`ctrl+alt+a`启动截屏
+安装完成之后，将guake添加到开机启动项中。
+
+F12：显示/隐藏Guake的程序界面。
+
+## electronic-wechat 
+
+Mac OS X 和 Linux 下更好用的微信客户端. 更多功能, 更少bug. 使用Electron构建.
+
+[github地址](https://github.com/kooritea/electronic-wechat)
