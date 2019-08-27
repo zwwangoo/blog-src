@@ -46,6 +46,8 @@ exec "$SHELL"
 pyenv verson
 ```
 
+<!--more-->
+
 ### 安装pyenv-virtualenv
 
 - clone插件到pyenv的安装路径
