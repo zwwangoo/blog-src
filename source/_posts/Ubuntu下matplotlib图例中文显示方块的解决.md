@@ -1,3 +1,8 @@
+---
+title: Ubuntu下matplotlib图例中文显示方块的解决
+date: 2019-08-25
+tags: [Python, matplotlib]
+---
 
 以下是步骤：
 

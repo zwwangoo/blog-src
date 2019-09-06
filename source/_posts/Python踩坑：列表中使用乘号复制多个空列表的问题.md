@@ -1,6 +1,6 @@
 ---
 title: Python踩坑：列表中使用乘号复制多个空列表的问题
-date: 2019-08-20
+date: 2019-08-27
 tags: [Python]
 ---
 
