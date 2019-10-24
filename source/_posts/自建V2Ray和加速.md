@@ -10,8 +10,10 @@ tags: [VPN, 服务器]
 ## 自动安装v2ray工具：
 
 ```
-wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+bash <(curl -s -L https://git.io/v2ray.sh)
 ```
+
+安装教程参考 [给小白的V2ray教程](https://github.com/zhaoweih/Shadowsocks-Tutorial/blob/master/super_easy_v2ray_tutorial.md)
 
 ## 安装BBR：
 
@@ -28,6 +30,8 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-
 wget https://install.direct/go.sh
 sudo base go.sh
 ```
+<!--more-->
+
 自动安装的路径：
 
 - /usr/bin/v2ray/v2ray：V2Ray 程序；
