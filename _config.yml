@@ -6,13 +6,13 @@
 title: 王志文
 subtitle:
 description:
-author: suAdminWen
+author: zwwangoo
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://suadminwen.github.io
+url: http://zwwangoo.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -99,5 +99,5 @@ jsonContent:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:suAdminWen/suadminwen.github.io.git
+  repo: git@github.com:zwwangoo/zwwangoo.github.io.git
   branch: master
