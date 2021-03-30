@@ -38,6 +38,8 @@ RabbitMQ可以通过交换机(Exchange)把消息发送给所有绑定该交换�
 
 发布者
 
+<!-- more -->
+
 ```
 import pika
 
