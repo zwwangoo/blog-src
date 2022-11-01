@@ -17,9 +17,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - run: |
+          for ip in $(dig @8.8.8.8 github.com +short); do 
+          ssh-keyscan github.com,$ip; 
+          ssh-keyscan $ip; 
+          done 2>/dev/null >> ~/.ssh/known_hosts
       - name: npm install, and push
         run: |
           git config --global user.name 'zwwangoo'
           git config --global user.email 'w_angzhiwen@163.com'
           npm install hexo hexo-cli
           node_modules/hexo/bin/hexo d -g
+
