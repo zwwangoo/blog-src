@@ -1,0 +1,38 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  push:
+    branches:
+    - main
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup Git Infomation
+        run: | 
+          git config --global user.name 'zwwangoo'
+          git config --global user.email 'w_angzhiwen@163.com' 
+        
+      - name: Setup SSH Private Key
+        env:
+          token_Private_Keys: ${{ secrets.token_Private_Keys }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$token_Private_Keys" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: npm install, and push
+        run: |
+          npm install hexo hexo-cli
+          node_modules/hexo/bin/hexo d -g
+
