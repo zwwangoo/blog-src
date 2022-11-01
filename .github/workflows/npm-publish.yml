@@ -17,5 +17,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
-      - run: node_modules/hexo/bin/hexo d -g
+      - name: npm install, and push
+        run: 
+          git config --global user.name 'zwwangoo'
+          git config --global user.email 'w_angzhiwen@163.com'
+          npm install hexo hexo-cli
+          node_modules/hexo/bin/hexo d -g
