@@ -20,7 +20,7 @@ CREATE ROLE
 
 ```
 shell> vi /etc/postgresql/14/main/pg_hba.conf
-host replication repl 192.168.51.241/32 md5
+host replication repl 10.211.55.4/32 md5
 ```
 
 repl 用户添加之后，及时手动进行生效
@@ -54,12 +54,6 @@ hot_standby_feedback = on
 shell> pg_ctl restart
 ```
 
-如果重启失败需要使用root用户重启
-
-```
-shell> systemctl restart postgresql
-```
-
 注意：其中只有 listen_address 参数设置需要重启生效，对于其他参数则可以选择 pg_ctl reload 或者 select pg_reload_conf();方式动态生效即可
 
 ### 4、从库测试连接
@@ -87,7 +81,7 @@ shell> rm -rf /var/lib/postgresql/14/main/*
 ### 2、备库远程拷贝主库数据目录
 
 ```
-shell> pg_basebackup -h 192.168.51.46 -U repl -D /postgres/product/data/ -X stream -P -R
+shell> pg_basebackup -h 10.211.55.4 -U repl -D /postgres/product/data/ -X stream -P -R
 Password: 
 33064/33064 kB (100%), 1/1 tablespace
 ```
@@ -112,8 +106,7 @@ START TIMELINE: 1
 
 ```
 shell> vi $PGDATA/postgresql.auto.conf
-primary_conninfo = 'host=192.168.51.46 port=5432 user=repl 
-password=Abcd321#'
+primary_conninfo = 'host=10.211.55.4 port=5432 user=repl password=Abcd321#'
 recovery_target_timeline = 'latest'
 #recovery_min_apply_delay=5ms #应用延迟，有特殊需求可以设置
 ```
@@ -142,13 +135,13 @@ shell> pg_ctl -D $PGDATA start
 
 在主库执行角色检查，如下：
 ```
-shell> pg_controldata| grep 'Database cluster state'
+shell> pg_controldata | grep 'Database cluster state'
 Database cluster state: in production
 ```
 
 在备库执行角色检查，如下：
 ```
-shell> pg_controldata| grep 'Database cluster state'
+shell> pg_controldata | grep 'Database cluster state'
 Database cluster state: in archive recovery
 ```
 
