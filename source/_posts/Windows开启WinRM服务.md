@@ -5,16 +5,16 @@ tags: [winrm,Windows]
 ---
 ## 配置 WinRM（HTTP）服务
 
-1. 登录 Windows 服务器，并以管理员身份运行 PowerShell。
+1 登录 Windows 服务器，并以管理员身份运行 PowerShell。
 
-2. 配置完成后, 可以通过以下命令确认是否配置成功
+2 配置完成后, 可以通过以下命令确认是否配置成功
 
 
    ```powershell
    winrm enumerate winrm/config/listener
    ```
 
-3. 运行以下命令配置 WinRM 服务：
+3 运行以下命令配置 WinRM 服务：
 
 
    ```powershell
@@ -28,7 +28,7 @@ tags: [winrm,Windows]
 
 ## 配置 WinRM（HTTPS）服务
 
-1. 下载 `enable_winrm_ssl.ps1` 脚本并上传到服务器的C盘根目录。
+1 下载 `enable_winrm_ssl.ps1` 脚本并上传到服务器的C盘根目录。
 
 
    ```powershell
@@ -130,7 +130,7 @@ tags: [winrm,Windows]
    
    ```
 
-2. 以管理员身份运行 PowerShell，执行以下命令：
+2 以管理员身份运行 PowerShell，执行以下命令：
 
 
    ```

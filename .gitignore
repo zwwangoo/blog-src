@@ -1,5 +1,6 @@
 .DS_Store
 .deploy_git
+!/public/blog-src/
 public
 node_modules/
 dist/

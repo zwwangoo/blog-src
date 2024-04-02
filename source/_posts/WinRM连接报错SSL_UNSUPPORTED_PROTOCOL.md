@@ -125,7 +125,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\P
 
 - 在这个路径下，你应该能看到几个文件夹，比如"SSL 2.0"，"SSL 3.0"，"TLS 1.0"，"TLS 1.1"，"TLS 1.2"，"TLS 1.3"等。这些文件夹代表了服务器支持的SSL/TLS版本。
 
-![4392eee5146633841007471659f756d4.png](/blog-img/4392eee5146633841007471659f756d4.png)
+![4392eee5146633841007471659f756d4.png](/blog-img/4feb779c3f3d46f5928913ee73b75f96.png)
 
 
 
