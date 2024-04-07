@@ -18,7 +18,7 @@ HTTPSConnectionPool(host='server', port=5986): Max retries exceeded with url: /w
 
 
 
-1. 验证 Windows 主机支持的协议:
+1 验证 Windows 主机支持的协议:
 
 
 
@@ -27,6 +27,8 @@ openssl s_client -connect <hostname>:5986
 ```
 
 输出将包含有关TLS会话的信息，协议行将显示已经协商的版本:
+
+<!-- more -->
 
 
 
@@ -110,7 +112,7 @@ Restart-Computer
 
 
 
-2. 查看服务器SSL/TLS配置
+2 查看服务器SSL/TLS配置
 
 在Windows服务器上，WinRM服务的SSL/TLS配置通常是由Windows操作系统的Schannel组件来处理的，而不是由WinRM服务本身来处理。因此，需要查看Schannel的配置来了解WinRM服务的SSL/TLS配置。
 
@@ -129,7 +131,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\P
 
 
 
-3. 代码修改适配ssl2.0协议
+3 代码修改适配ssl2.0协议
 
 配置TLS1.2 需要重启服务器，对于客户环境该要求过于理想，所以需要代码改造。
 

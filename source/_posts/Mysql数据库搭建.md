@@ -9,7 +9,7 @@ tags: [数据库, mysql]
 
 
 
-1. 解压Mysql压缩包到/usr/local/mysql下：
+1 解压Mysql压缩包到/usr/local/mysql下：
 
 ```
 tar -zxvf mysql_5.7.44_linux_x86_64.tar.gz -C /usr/local/
@@ -17,7 +17,7 @@ cd /usr/local/
 mv mysql-5.7.44-linux-glibc2.12-x86_64 mysql
 ```
 
-2. 创建mysql用户组及其用户
+2 创建mysql用户组及其用户
 
 useradd -g表示把mysql用户添加到mysql用户组中
 
@@ -28,14 +28,14 @@ groupadd mysql
 useradd -g mysql mysql
 ```
 
-3. 创建data目录和tmp目录
+3 创建data目录和tmp目录
 
 ```
 mkdir /usr/local/mysql/data
 mkdir /usr/local/mysql/tmp
 ```
 
-4. 初始化MySQL配置表
+4 初始化MySQL配置表
 
 ```
 cd /usr/local/mysql
@@ -54,7 +54,7 @@ yum install -y libaio numactl
 apt install libaio-dev
 ```
 
-5. 创建配置文件/etc/my.cnf
+5 创建配置文件/etc/my.cnf
 
 创建配置文件，并写入以下内容：
 
@@ -71,14 +71,14 @@ socket = /usr/local/mysql/tmp/mysql.sock
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 ```
 
-6. 更改文件权限
+6 更改文件权限
 
 ```
 chown -R mysql /usr/local/mysql/data
 chown -R mysql /usr/local/mysql/tmp
 ```
 
-7. 启动Mysql服务（这步可以不做）
+7 启动Mysql服务（这步可以不做）
 
 ```
 ./bin/mysqld --defaults-file=/etc/my.cnf --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
@@ -86,6 +86,8 @@ chown -R mysql /usr/local/mysql/tmp
 
 输出，则表示Mysql服务配置成功：
 
+
+<!-- more -->
 
 
 ```
@@ -96,7 +98,7 @@ chown -R mysql /usr/local/mysql/tmp
 2024-04-03T08:53:44.134380Z 0 [Note] Server socket created on IP: '::'.
 ```
 
-8. 建立软连接
+8 建立软连接
 
 ```
 ln -s /usr/local/mysql/bin/mysql  /usr/local/bin
@@ -104,7 +106,7 @@ ln -s /usr/local/mysql/bin/mysqladmin  /usr/local/bin
 ln -s /usr/local/mysql/bin/mysqld_safe  /usr/local/bin
 ```
 
-9. mysqld服务加入开机自启动项
+9 mysqld服务加入开机自启动项
 
 把mysql下的support-files/mysql.server服务脚本放到系统服务，并设置运行权限
 
@@ -116,7 +118,7 @@ chmod +x /etc/init.d/mysqld
 
 这样就可以使用`service mysqld start`启动服务。
 
-10. 修改Mysql密码
+10 修改Mysql密码
 
 使用mysql连接数据库，密码为初始化MySQL配置时，输出的root初始密码：
 
@@ -146,17 +148,17 @@ apt install libncurses5
 
 
 
-1. 停止正在运行的 MySQL 服务: `service mysqld stop`
-2. 安全模式启动 MySQL 服务: `./bin/mysqld_safe --skip-grant-tables --skip-networking &`
-3. 不需要密码就能以 root 用户身份登录到 MySQL 了：`mysql -u root `
-4. 不需要密码就能以 root 用户身份登录到 MySQL 了：
+- 1 停止正在运行的 MySQL 服务: `service mysqld stop`
+- 2 安全模式启动 MySQL 服务: `./bin/mysqld_safe --skip-grant-tables --skip-networking &`
+- 3 不需要密码就能以 root 用户身份登录到 MySQL 了：`mysql -u root `
+- 4 不需要密码就能以 root 用户身份登录到 MySQL 了：
 
 ```
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
 ```
 
-5. 需要退出 MySQL 命令行，然后停止安全模式下的 MySQL 服务，再以正常模式启动 MySQL 服务:
+- 5 需要退出 MySQL 命令行，然后停止安全模式下的 MySQL 服务，再以正常模式启动 MySQL 服务:
 
 ```
 # 需要输入新设置的密码，这里示例设置的是mysql

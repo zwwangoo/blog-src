@@ -5,7 +5,7 @@ tags: [数据库, mysql]
 ---
 
 
-1. 备份源库
+1 备份源库
 
 ```
 ./bin/mysqldump -u root -pmysql --single-transaction -A -R -E --triggers --master-data=2 --flush-logs > full.sql
@@ -15,7 +15,7 @@ tags: [数据库, mysql]
 
 
 
-2. 修改源和目标的mysql配置（service-id 主从不能相同）：
+2 修改源和目标的mysql配置（service-id 主从不能相同）：
 
 
 
@@ -29,13 +29,13 @@ binlog_format = ROW
 
 
 
-3. 重启主从
+3 重启主从
 
 ```
 service mysqld restart
 ```
 
-4. 生产端创建复制用户
+4 生产端创建复制用户
 
 ```mysql
 create user repl@'%' identified by 'repl@admin!123';
@@ -43,9 +43,9 @@ grant REPLICATION SLAVE on *.* to 'repl'@'%';
 flush privileges;
 ```
 
-5. 目标端全局恢复
+5 目标端全局恢复
 
-6. 目标端配置复制连接
+6 目标端配置复制连接
 
 MySQL8.0默认使用caching_sha2_password身份验证插件需要指定get_master_public_key=1
 
@@ -53,13 +53,13 @@ MySQL8.0默认使用caching_sha2_password身份验证插件需要指定get_maste
 change master to master_host='192.168.2.181',master_user='repl',master_password='repl@admin!123',master_port=3306,MASTER_LOG_FILE='mysql-bin.000002', MASTER_LOG_POS=154;
 ```
 
-7. 启动复制
+7 启动复制
 
 ```
 start slave
 ```
 
-8. 查看复制状态
+8 查看复制状态
 
 ```
 show slave status \G
