@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-//-----------------------------------------------------
+//-----------------------------------------------------  
 // mixin scss
 // 包括常用的mixin, %, @function 及辅助的btn和背景图片icon
 // mixin，通过@include调用，样式通过拷贝的方式使用，尤其适用于传递参数
-// %，通过@extend调用，样式通过组合申明的方式使用，适用于不传参数的代码片段
+// %，通过@extend调用，样式通过组合申明的方式使用，适用于不传参数的代码片段  
 // @function，返回一个值，用于调用
 //-----------------------------------------------------
 
@@ -162,7 +162,7 @@
     @include fixed(bottom);
 }
 
-// justify
+// justify 
 // 左右对齐
 @mixin justify($extend: true) {
     @if $extend {
@@ -235,7 +235,7 @@
     top: 0;
     box-sizing: border-box;
 
-    @if $direction == top or $direction == bottom{
+    @if $direction == top or $direction == bottom{    
         right: 0;
         height: 0;
         transform: scaleY(0.5);
@@ -471,8 +471,8 @@
 // }
 @mixin parent-state($states...) {
     $parent: nth(nth(&, 1), (length(nth(&, 1))-1));
-
-    @each $state in $states {
+    
+    @each $state in $states {    
       @at-root #{selector-replace(&, $parent, str-insert($state, $parent, 0))} {
           @content;
       }
@@ -518,7 +518,7 @@
                 }
             }
         }
-        @if $to and length($to) > 1 {
+        @if $to andd length($to) > 1 {
             to {
                 @if nth($to, 1) == x {
                   transform: translate(nth($to, 2), 0);
