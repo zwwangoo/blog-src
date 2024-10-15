@@ -10,7 +10,7 @@ JDK 官网下载地址: https://www.oracle.com/technetwork/java/javase/downloads
 
 tar.gz 是普通的压缩包文件，直接解压即可。
 
-1. 安装 JDK
+1、安装 JDK
 
 ```
 
@@ -25,7 +25,7 @@ cd /usr/java/jdk-23
 
 ```
 
-2. 配置环境变量
+2、配置环境变量
 ```
 # 打开全局环境变量配置文件
 vim /etc/profile
@@ -38,7 +38,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 source /etc/profile
 ```
 
-3. 检查结果
+3、检查结果
 ```
 java -version
 ```

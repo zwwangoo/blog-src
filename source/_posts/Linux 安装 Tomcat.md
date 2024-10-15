@@ -5,14 +5,14 @@ date: 2024-10-14
 tags: [ 技术文档 ]
 
 ---
-1. 安装 JDK[Linux 安装JDK和Java环境变量配置](Linux%20安装JDK和Java环境变量配置.md)
-2. 下载 Tomcat，官网: https://tomcat.apache.org 这里实例安装 Tomcat 10.1.31
-3. 安装
+1、 安装 JDK [Linux 安装JDK和Java环境变量配置](Linux%20安装JDK和Java环境变量配置.md)
+2、下载 Tomcat，官网: https://tomcat.apache.org 这里实例安装 Tomcat 10.1.31
+3、安装
 ```
 mkdir /usr/local/tomcat
 tar -zxvf apache-tomcat-10.1.31.tar.gz -C /usr/local/tomcat
 ```
-4. 启动和停止
+4、启动和停止
 ```
 cd /usr/local/tomcat/apache-tomcat-10.1.31/bin
 # 启动
@@ -21,7 +21,7 @@ cd /usr/local/tomcat/apache-tomcat-10.1.31/bin
 ./shutdown.sh
 ```
 
-5. Tomcat 服务器根目录下的文件夹:
+5、Tomcat 服务器根目录下的文件夹:
 
 - bin: 存放 Tomcat 的启动、停止等相关命令
 - lib: 存放 Tomcat 运行时所需要的 jar 包
