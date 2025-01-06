@@ -19,7 +19,20 @@ docker run -d -p 1972:1972 -p 57772:57772 daimor/intersystems-cache:2018.1
 
 ## 终端使用
 
-- 登录数据库： `cache`
+查看实例信息：
+
+```bash
+$ ccontrol all
+    Instance Name     Version ID        Port   Directory
+    ----------------  ----------------  -----  --------------------------------
+up >CACHE             2018.1.5.659.0    1972   /usr/cachesys/
+```
+
+常用命令：
+
+- 查看当前实例信息： `ccontrol all`
+- 启动 ISCAgent：`/etc/init.d/ISCAgent start`
+- 登录 terminal： `csession cache`
 - 切换命名空间： `zn "%sys"`
 - 进入 SQL Shell：`do $SYSTEM.SQL.Shell()`
 - 退出数据库：`halt`
@@ -124,7 +137,7 @@ yum install -y gcc gcc-c++ python3 python3-devel
 
 注意 `/usr/cachesys/bin` 是驱动
 
-```
+```python
 cd /usr/cachesys/dev/python
 python3 setup3.py install <<EOF
 > /usr/cachesys
