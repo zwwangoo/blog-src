@@ -36,3 +36,5 @@ error: command '/usr/bin/gcc' failed with exit code 1
 ```
 
 解决方案：`pip install Cython==0.29.32`
+
+提示：Python 会对 `.py` 文件生成 `.pyc ` 文件，所以加密要在运行前进行，或者加密完成后再删除 `__pycache__/xxx.pyc ` 文件
