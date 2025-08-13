@@ -23,7 +23,13 @@ wget https://github.com/etingof/snmpsim/raw/master/data/public.snmprec -O ./data
 启动：
 
 ```bash
-/usr/python/bin/snmpsim-command-responder  --data-dir=./data --agent-udpv4-endpoint=0.0.0.0:161
+snmpsim-command-responder --data-dir=./data --agent-udpv4-endpoint=0.0.0.0:161
+
+# 如果报错：snmpsim.error.SnmpsimError: Must drop privileges to a non-privileged user&group 需要增加参数 --process-user=$(whoami) --process-group=$(id -gn)
+snmpsim-command-responder --process-user=$(whoami) --process-group=$(id -gn) --data-dir=./data --agent-udpv4-endpoint=0.0.0.0:161
+
+# 如果报错：snmpsim-command-responder: command not found
+snmpsimd.py --process-user=$(whoami) --process-group=$(id -gn) --data-dir=./data --agent-udpv4-endpoint=0.0.0.0:161
 ```
 
 注意观察输出日志，其中 `community name: public`：
