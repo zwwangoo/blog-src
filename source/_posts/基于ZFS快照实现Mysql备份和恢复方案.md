@@ -98,7 +98,7 @@ zfs snapshot mysql_pool/mysqldb@20250905_1447
 zfs list -t snapshot
 
 # 设置定时任务 - 每4小时创建一次快照
-echo '0 */4 * * * root /usr/sbin/zfs snapshot mysql_pool/mysqldb@auto_$(date +\%Y\%m\%d_\%H\%M\%S)' >> /etc/crontab
+echo '0 */4 * * * root /usr/sbin/zfs snapshot mysql_pool/mysqldb@auto_$(date +%Y%m%d_%H%M%S)' >> /etc/crontab
 
 # 显示 crontab
 tail -1 /etc/crontab
